@@ -1,5 +1,6 @@
 package br.com.fiap.pizzaria;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,6 +84,13 @@ public class PedidoActivity extends AppCompatActivity {
         pedido.setCliente(usernameLogin);
         pedido.setTamanho(getTamanhoSelecionado());
         pedido.setFormaPagamento(spPagamentos.getSelectedItem().toString());
+
+
+        Intent Confirmar = new Intent(this,ConfirmarPedidoActivity.class);
+
+        Confirmar.putExtra("PEDIDO",pedido);
+
+        startActivity(Confirmar);
 
     }
 

@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".PedidoActivity"></activity>
+        <activity android:name=".PedidoActivity" />
+        <activity android:name=".ConfirmarPedidoActivity"></activity>
     </application>
 
 </manifest>
