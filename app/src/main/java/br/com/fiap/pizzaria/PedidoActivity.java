@@ -53,43 +53,33 @@ public class PedidoActivity extends AppCompatActivity {
 
         }
 
-        cbMussarela.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        setListernerCheckBox(cbMussarela);
+        setListernerCheckBox(cbAtum);
+        setListernerCheckBox(cbCalabresa);
+        setListernerCheckBox(cbFrango);
 
-                    if(isChecked){
-                        pedido.addSabor(cbMussarela.getText().toString());
-                    }else{
-                        pedido.removeSabor(cbMussarela.getText().toString());
-                    }
-            }
-        });
+    }
 
-        cbAtum.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+    private void setListernerCheckBox(final CheckBox checkBox)
+    {
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked){
-                    pedido.addSabor(cbAtum.getText().toString());
+                    pedido.addSabor(checkBox.getText().toString());
                 }else{
-                    pedido.removeSabor(cbAtum.getText().toString());
+                    pedido.removeSabor(checkBox.getText().toString());
                 }
             }
         });
-
-
-
     }
 
     @OnClick(R.id.btFecharPedido)
     public void fecharPedido(){
 
         pedido.setCliente(usernameLogin);
-
-
-
-
-
 
 
     }
