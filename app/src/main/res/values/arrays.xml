@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pagamentos">
+        <item>@string/valeRefeicao</item>
+        <item>@string/ctMaster</item>
+        <item>@string/ctVisa</item>
+
+    </string-array>
+</resources>

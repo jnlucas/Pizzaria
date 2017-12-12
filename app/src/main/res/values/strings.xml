@@ -2,6 +2,12 @@
     <string name="app_name">Pizzaria</string>
     <string name="username">Nome</string>
     <string name="password">Senha</string>
+    <string name="login">Login</string>
+    <string name="escolha_pizza">Escolha Pizza</string>
+    <string name="valeRefeicao">Vale Refeicao</string>
+    <string name="ctMaster">Master</string>
+    <string name="ctVisa">Visa</string>
+
 
 
 
