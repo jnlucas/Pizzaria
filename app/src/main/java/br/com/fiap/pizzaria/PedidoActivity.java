@@ -3,30 +3,94 @@ package br.com.fiap.pizzaria;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import br.com.fiap.pizzaria.model.Pedido;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PedidoActivity extends AppCompatActivity {
 
-    @BindView(R.id.tvUsuario)
-    TextInputLayout tvUsuario;
-
     String usernameLogin;
+
+    @BindView(R.id.tvUsuario)
+    TextView tvUsuario;
+
+    @BindView(R.id.cbAtum)
+    CheckBox cbAtum;
+
+    @BindView(R.id.cbCalabresa)
+    CheckBox cbCalabresa;
+
+    @BindView(R.id.cbFrango)
+    CheckBox cbFrango;
+
+    @BindView(R.id.cbMussarela)
+    CheckBox cbMussarela;
+
+    @BindView(R.id.rgTamanho)
+    RadioGroup rgTamanho;
+
+    @BindView(R.id.spPagamentos)
+    Spinner spPagamentos;
+
+    Pedido pedido = new Pedido();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido);
-
-//        ButterKnife.bind(this);
+        ButterKnife.bind(this);
         if (getIntent() != null) {
             usernameLogin = (getIntent().getStringExtra("username").toString());
+            tvUsuario.setText(usernameLogin);
 
-           // tvUsuario.getEditText().setText(usernameLogin.toString());
-
-           // Toast.makeText(this,usernameLogin.toString(),Toast.LENGTH_LONG).show();
         }
+
+        cbMussarela.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    if(isChecked){
+                        pedido.addSabor(cbMussarela.getText().toString());
+                    }else{
+                        pedido.removeSabor(cbMussarela.getText().toString());
+                    }
+            }
+        });
+
+        cbAtum.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+                    pedido.addSabor(cbAtum.getText().toString());
+                }else{
+                    pedido.removeSabor(cbAtum.getText().toString());
+                }
+            }
+        });
+
+
+
+    }
+
+    @OnClick(R.id.btFecharPedido)
+    public void fecharPedido(){
+
+        pedido.setCliente(usernameLogin);
+
+
+
+
+
+
+
     }
 }
